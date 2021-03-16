@@ -79,6 +79,11 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
         return enrolments.stream().filter(e -> e.getSemester().equals(semester) && e.getCourse().getId().equals(courseId)).map(Enrolment::getStudent).distinct().collect(Collectors.toList());
     }
 
+    @Override
+    public List<String> getSemesters() {
+        return enrolments.stream().map(Enrolment::getSemester).distinct().collect(Collectors.toList());
+    }
+
     public List<Enrolment> getEnrolmentsByCourseId(String courseId) {
         return enrolments.stream().filter(e -> e.getCourse().getId().equals(courseId)).collect(Collectors.toList());
     }

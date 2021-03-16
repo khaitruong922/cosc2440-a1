@@ -24,4 +24,6 @@ public interface StudentEnrolmentManager {
     List<Course> getCoursesOfStudentInSemseter(String studentId, String semester);
 
     List<Student> getStudentsInCourseInSemester(String courseId, String semester);
+
+    List<String> getSemesters();
 }

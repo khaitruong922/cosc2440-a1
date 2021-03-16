@@ -18,7 +18,7 @@ public class OptionMenu {
         table.display();
     }
 
-    public void start() {
+    public void run() {
         Scanner sc = new Scanner(System.in);
         displayOptions();
         while (true) {

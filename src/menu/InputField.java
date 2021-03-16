@@ -8,12 +8,12 @@ import java.util.Scanner;
 
 public class InputField {
     private final String label;
-    private boolean required;
-    private final List<Validator> validators = new ArrayList<>();
+    private boolean required = false;
+    private Validator validator = null;
+    private String errorMessage = "Invalid input.";
 
     public InputField(String label) {
         this.label = label;
-        required = false;
     }
 
     public String getInput() {
@@ -26,11 +26,9 @@ public class InputField {
             return getInput();
         }
         // Check if the input is valid
-        for (Validator validator : validators) {
-            if (!validator.validate(input)) {
-                System.out.println(validator.getErrorMessage());
-                return getInput();
-            }
+        if (validator != null && !validator.validate(input)) {
+            System.out.println(errorMessage);
+            return getInput();
         }
         return input;
     }
@@ -40,8 +38,13 @@ public class InputField {
         return this;
     }
 
-    public InputField addValidator(Validator validator) {
-        validators.add(validator);
+    public InputField setValidator(Validator validator) {
+        this.validator = validator;
+        return this;
+    }
+
+    public InputField setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
         return this;
     }
 }

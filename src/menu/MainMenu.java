@@ -1,28 +1,29 @@
 package menu;
 
-import service.StudentEnrolmentService;
+import repository.InMemoryStudentEnrolmentManager;
+import repository.StudentEnrolmentManager;
+import validator.Validator;
 
 public class MainMenu {
-    private static final MainMenu instance = new MainMenu();
 
-    private static MainMenu getInstance() {
-        return instance;
-    }
-
-    private final StudentEnrolmentService ses = new StudentEnrolmentService();
+    private final StudentEnrolmentManager sem = new InMemoryStudentEnrolmentManager();
+    private final SemesterMenu semesterMenu = new SemesterMenu();
     private final OptionMenu optionMenu;
 
-    private MainMenu() {
+    public MainMenu() {
         optionMenu = new OptionMenu();
-        optionMenu.add(new Option("View courses in semester", "1", () -> {
-            ses.printCoursesInSemester("2021A");
+        optionMenu.add(new Option("Students", "1", () -> {
+            run();
         }));
-        optionMenu.add(new Option("View courses of student in semester", "2", () -> {
-            ses.printStudentsInCourseInSemester("COSC2092", "2021A");
+        optionMenu.add(new Option("Courses", "2", () -> {
+            run();
         }));
-        optionMenu.add(new Option("View students in course in semester", "3", () -> {
-            ses.printCoursesOfStudentInSemseter("s3818074", "2021A");
+        optionMenu.add(new Option("Quit", "3", () -> {
+            System.out.println("Program exits.");
+        }));
+    }
 
-        }));
+    public void run() {
+        optionMenu.run();
     }
 }
