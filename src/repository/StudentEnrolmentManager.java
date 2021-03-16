@@ -1,7 +1,6 @@
 package repository;
 
-import model.Course;
-import model.StudentEnrolment;
+import model.Enrolment;
 
 import java.util.List;
 
@@ -12,9 +11,9 @@ public interface StudentEnrolmentManager {
 
     boolean deleteEnrolment(String studentId);
 
-    List<StudentEnrolment> getEnrolments();
+    List<Enrolment> getEnrolments();
 
-    List<StudentEnrolment> getEnrolmentsByCourseId(String courseId);
+    List<Enrolment> getEnrolmentsByCourseId(String courseId);
 
-    List<StudentEnrolment> getEnrolmentsByStudentId(String studentId);
+    List<Enrolment> getEnrolmentsByStudentId(String studentId);
 }

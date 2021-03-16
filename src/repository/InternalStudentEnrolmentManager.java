@@ -2,14 +2,14 @@ package repository;
 
 import model.Course;
 import model.Student;
-import model.StudentEnrolment;
+import model.Enrolment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class InternalStudentEnrolmentManager implements StudentEnrolmentManager {
-    private final List<StudentEnrolment> enrolments = new ArrayList<>();
+    private final List<Enrolment> enrolments = new ArrayList<>();
     private final List<Student> students = new ArrayList<>();
     private final List<Course> courses = new ArrayList<>();
 
@@ -30,7 +30,7 @@ public class InternalStudentEnrolmentManager implements StudentEnrolmentManager 
     public boolean addEnrolment(String studentId, String courseId, String semester) {
         Student student = getStudentById(studentId);
         Course course = getCourseById(courseId);
-        enrolments.add(new StudentEnrolment(student, course, semester));
+        enrolments.add(new Enrolment(student, course, semester));
         return true;
     }
 
@@ -45,7 +45,7 @@ public class InternalStudentEnrolmentManager implements StudentEnrolmentManager 
     }
 
     @Override
-    public List<StudentEnrolment> getEnrolments() {
+    public List<Enrolment> getEnrolments() {
         return enrolments;
     }
 
@@ -58,23 +58,23 @@ public class InternalStudentEnrolmentManager implements StudentEnrolmentManager 
     }
 
     public List<Course> getCoursesInSemester(String semester) {
-        return enrolments.stream().filter(e -> e.getSemester().equals(semester)).distinct().map(StudentEnrolment::getCourse).distinct().collect(Collectors.toList());
+        return enrolments.stream().filter(e -> e.getSemester().equals(semester)).distinct().map(Enrolment::getCourse).distinct().collect(Collectors.toList());
     }
 
     public List<Course> getCoursesOfStudentInSemseter(String studentId, String semester) {
-        return enrolments.stream().filter(e -> e.getSemester().equals(semester) && e.getStudent().getId().equals(studentId)).map(StudentEnrolment::getCourse).distinct().collect(Collectors.toList());
+        return enrolments.stream().filter(e -> e.getSemester().equals(semester) && e.getStudent().getId().equals(studentId)).map(Enrolment::getCourse).distinct().collect(Collectors.toList());
     }
 
     public List<Student> getStudentsInCourseInSemester(String courseId, String semester) {
-        return enrolments.stream().filter(e -> e.getSemester().equals(semester) && e.getCourse().getId().equals(courseId)).map(StudentEnrolment::getStudent).distinct().collect(Collectors.toList());
+        return enrolments.stream().filter(e -> e.getSemester().equals(semester) && e.getCourse().getId().equals(courseId)).map(Enrolment::getStudent).distinct().collect(Collectors.toList());
     }
 
-    public List<StudentEnrolment> getEnrolmentsByCourseId(String courseId) {
+    public List<Enrolment> getEnrolmentsByCourseId(String courseId) {
         return enrolments.stream().filter(e -> e.getCourse().getId().equals(courseId)).collect(Collectors.toList());
     }
 
     @Override
-    public List<StudentEnrolment> getEnrolmentsByStudentId(String studentId) {
+    public List<Enrolment> getEnrolmentsByStudentId(String studentId) {
         return enrolments.stream().filter(e -> e.getStudent().getId().equals(studentId)).collect(Collectors.toList());
     }
 }
