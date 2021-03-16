@@ -13,9 +13,21 @@ public class InternalStudentEnrolmentManager implements StudentEnrolmentManager 
     private final List<Student> students = new ArrayList<>();
     private final List<Course> courses = new ArrayList<>();
 
+    public boolean addStudent(Student student) {
+        if (getStudentById(student.getId()) != null) return false;
+        students.add(student);
+        return true;
+    }
+
+    public boolean addCourse(Course course) {
+        if (getCourseById(course.getId()) != null) return false;
+        courses.add(course);
+        return true;
+    }
+
 
     @Override
-    public boolean add(String studentId, String courseId, String semester) {
+    public boolean addEnrolment(String studentId, String courseId, String semester) {
         Student student = getStudentById(studentId);
         Course course = getCourseById(courseId);
         enrolments.add(new StudentEnrolment(student, course, semester));
@@ -23,17 +35,17 @@ public class InternalStudentEnrolmentManager implements StudentEnrolmentManager 
     }
 
     @Override
-    public boolean update(String studentId) {
+    public boolean updateEnrolment(String studentId) {
         return false;
     }
 
     @Override
-    public boolean delete(String studentId) {
+    public boolean deleteEnrolment(String studentId) {
         return false;
     }
 
     @Override
-    public List<StudentEnrolment> getAll() {
+    public List<StudentEnrolment> getEnrolments() {
         return enrolments;
     }
 
@@ -45,13 +57,24 @@ public class InternalStudentEnrolmentManager implements StudentEnrolmentManager 
         return courses.stream().filter(c -> c.getId().equals(courseId)).findFirst().orElse(null);
     }
 
-    @Override
-    public List<StudentEnrolment> getByCourseId(String courseId) {
+    public List<Course> getCoursesInSemester(String semester) {
+        return enrolments.stream().filter(e -> e.getSemester().equals(semester)).distinct().map(StudentEnrolment::getCourse).distinct().collect(Collectors.toList());
+    }
+
+    public List<Course> getCoursesOfStudentInSemseter(String studentId, String semester) {
+        return enrolments.stream().filter(e -> e.getSemester().equals(semester) && e.getStudent().getId().equals(studentId)).map(StudentEnrolment::getCourse).distinct().collect(Collectors.toList());
+    }
+
+    public List<Student> getStudentsInCourseInSemester(String courseId, String semester) {
+        return enrolments.stream().filter(e -> e.getSemester().equals(semester) && e.getCourse().getId().equals(courseId)).map(StudentEnrolment::getStudent).distinct().collect(Collectors.toList());
+    }
+
+    public List<StudentEnrolment> getEnrolmentsByCourseId(String courseId) {
         return enrolments.stream().filter(e -> e.getCourse().getId().equals(courseId)).collect(Collectors.toList());
     }
 
     @Override
-    public List<StudentEnrolment> getByStudentId(String studentId) {
+    public List<StudentEnrolment> getEnrolmentsByStudentId(String studentId) {
         return enrolments.stream().filter(e -> e.getStudent().getId().equals(studentId)).collect(Collectors.toList());
     }
 }

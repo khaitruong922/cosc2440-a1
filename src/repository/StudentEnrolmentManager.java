@@ -6,15 +6,15 @@ import model.StudentEnrolment;
 import java.util.List;
 
 public interface StudentEnrolmentManager {
-    boolean add(String studentId, String courseId, String semester);
+    boolean addEnrolment(String studentId, String courseId, String semester);
 
-    boolean update(String studentId);
+    boolean updateEnrolment(String studentId);
 
-    boolean delete(String studentId);
+    boolean deleteEnrolment(String studentId);
 
-    List<StudentEnrolment> getAll();
+    List<StudentEnrolment> getEnrolments();
 
-    List<StudentEnrolment> getByCourseId(String courseId);
+    List<StudentEnrolment> getEnrolmentsByCourseId(String courseId);
 
-    List<StudentEnrolment> getByStudentId(String studentId);
+    List<StudentEnrolment> getEnrolmentsByStudentId(String studentId);
 }

@@ -34,5 +34,14 @@ public class StudentEnrolment {
     public void setSemester(String semester) {
         this.semester = semester;
     }
+
+    @Override
+    public String toString() {
+        return "StudentEnrolment{" +
+                "student=" + student +
+                ", course=" + course +
+                ", semester='" + semester + '\'' +
+                '}';
+    }
 }
 
