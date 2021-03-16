@@ -3,5 +3,7 @@ package validator;
 public interface Validator {
     boolean validate(String input);
 
-    String getErrorMessage();
+    default String getErrorMessage() {
+        return "Invalid input.";
+    }
 }

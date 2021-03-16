@@ -13,4 +13,8 @@ public interface StudentEnrolmentManager {
     boolean delete(String studentId);
 
     List<StudentEnrolment> getAll();
+
+    List<StudentEnrolment> getByCourseId(String courseId);
+
+    List<StudentEnrolment> getByStudentId(String studentId);
 }
