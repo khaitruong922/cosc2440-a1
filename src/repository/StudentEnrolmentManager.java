@@ -1,17 +1,17 @@
 package repository;
 
-import model.Student;
+import model.StudentEnrolment;
 
 import java.util.List;
 
 public interface StudentEnrolmentManager {
-    boolean add(Student student);
+    boolean add(StudentEnrolment studentEnrolment);
 
-    boolean update(String studentId, Student updatedStudent);
+    boolean update(String studentId);
 
     boolean delete(String studentId);
 
-    Student getOne(String studentId);
+    StudentEnrolment getOne(StudentEnrolment studentEnrolment);
 
-    List<Student> getAll();
+    List<StudentEnrolment> getAll();
 }
