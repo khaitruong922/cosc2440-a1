@@ -8,10 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InternalStudentEnrolmentManager implements StudentEnrolmentManager {
+public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager {
     private final List<Enrolment> enrolments = new ArrayList<>();
     private final List<Student> students = new ArrayList<>();
     private final List<Course> courses = new ArrayList<>();
+
+    public InMemoryStudentEnrolmentManager() {
+        students.add(new Student("s3818074", "Khai Truong", null));
+        students.add(new Student("s3818075", "Khai Truong 2", null));
+        courses.add(new Course("COSC2092", "Machine Learning", 24));
+        courses.add(new Course("COSC2440", "SADI", 12));
+        addEnrolment("s3818074", "COSC2092", "2021A");
+        addEnrolment("s3818075", "COSC2092", "2021A");
+        addEnrolment("s3818074", "COSC2440", "2021A");
+    }
 
     public boolean addStudent(Student student) {
         if (getStudentById(student.getId()) != null) return false;

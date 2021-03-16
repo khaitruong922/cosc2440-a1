@@ -1,6 +1,8 @@
 package repository;
 
+import model.Course;
 import model.Enrolment;
+import model.Student;
 
 import java.util.List;
 
@@ -16,4 +18,10 @@ public interface StudentEnrolmentManager {
     List<Enrolment> getEnrolmentsByCourseId(String courseId);
 
     List<Enrolment> getEnrolmentsByStudentId(String studentId);
+
+    List<Course> getCoursesInSemester(String semester);
+
+    List<Course> getCoursesOfStudentInSemseter(String studentId, String semester);
+
+    List<Student> getStudentsInCourseInSemester(String courseId, String semester);
 }

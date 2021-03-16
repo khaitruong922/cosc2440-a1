@@ -1,9 +1,18 @@
 package model;
 
-public class Enrolment {
+public class Enrolment implements Model {
     private Student student;
     private Course course;
     private String semester;
+    private final static String[] fields = {"Student ID", "Course ID", "Semester"};
+
+    public static String[] getFields() {
+        return fields;
+    }
+
+    public String[] toRecord() {
+        return new String[]{student.getId(), course.getId(), semester};
+    }
 
     public Enrolment(Student student, Course course, String semester) {
         this.student = student;

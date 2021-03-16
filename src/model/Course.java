@@ -1,9 +1,14 @@
 package model;
 
-public class Course {
+public class Course implements Model {
     private String id;
     private String name;
     private int numberOfCredits;
+    private final static String[] fields = {"ID", "Name", "Number of Credits"};
+
+    public static String[] getFields() {
+        return fields;
+    }
 
     public Course(String id, String name, int numberOfCredits) {
         this.id = id;
@@ -42,5 +47,10 @@ public class Course {
                 ", name='" + name + '\'' +
                 ", numberOfCredits=" + numberOfCredits +
                 '}';
+    }
+
+    @Override
+    public String[] toRecord() {
+        return new String[]{id, name, String.valueOf(numberOfCredits)};
     }
 }

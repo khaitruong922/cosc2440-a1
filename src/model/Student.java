@@ -2,10 +2,15 @@ package model;
 
 import java.util.Date;
 
-public class Student {
+public class Student implements Model {
     private String id;
     private String name;
     private Date birthDate;
+    private final static String[] fields = {"ID", "Name", "Birth Date"};
+
+    public static String[] getFields() {
+        return fields;
+    }
 
     public Student(String id, String name, Date birthDate) {
         this.id = id;
@@ -44,5 +49,10 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate +
                 '}';
+    }
+
+    @Override
+    public String[] toRecord() {
+        return new String[]{id, name, birthDate.toString()};
     }
 }
