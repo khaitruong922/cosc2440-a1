@@ -53,6 +53,6 @@ public class Student implements Model {
 
     @Override
     public String[] toRecord() {
-        return new String[]{id, name, birthDate.toString()};
+        return new String[]{id, name, birthDate == null ? "" : birthDate.toString()};
     }
 }
