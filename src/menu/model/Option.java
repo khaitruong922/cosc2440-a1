@@ -1,4 +1,4 @@
-package menu;
+package menu.model;
 
 public class Option {
     private final String label;

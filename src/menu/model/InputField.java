@@ -1,4 +1,4 @@
-package menu;
+package menu.model;
 
 import validator.Validator;
 
