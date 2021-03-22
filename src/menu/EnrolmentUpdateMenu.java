@@ -55,9 +55,21 @@ public class EnrolmentUpdateMenu extends Menu {
             return;
         }
         enrolmentService.deleteEnrolment(sid, cid, semester);
+        viewEnrolledCourses();
     }
 
     private void enrollCourse() {
+        viewEnrolledCourses();
+        String cid = inputService.getCidInput();
+        if (cid.isEmpty()) return;
+        List<Course> courses = courseService.getCoursesOfStudent(sid, semester);
+        Course course = courses.stream().filter(c -> c.getId().equals(cid)).findFirst().orElse(null);
+        if (course != null) {
+            System.out.println("Student " + sid + " has already enrolled in " + cid + " in " + semester);
+            return;
+        }
+        enrolmentService.addEnrolment(sid, cid, semester);
+        viewEnrolledCourses();
     }
 
     private void viewEnrolledCourses() {
