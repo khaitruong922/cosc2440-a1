@@ -17,6 +17,8 @@ public interface StudentEnrolmentManager {
 
     List<Student> getStudents();
 
+    Enrolment getEnrolment(String sid, String cid, String semester);
+
     Course getCourseById(String id);
 
     Student getStudentById(String id);

@@ -46,13 +46,17 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
         Course course = getCourseById(cid);
         if (course == null) return null;
         Enrolment enrolment = new Enrolment(student, course, semester);
+        if (getEnrolment(sid, cid, semester) != null) return null;
         enrolments.add(enrolment);
         return enrolment;
     }
 
     @Override
     public boolean deleteEnrolment(String sid, String cid, String semester) {
-        return false;
+        Enrolment enrolment = getEnrolment(sid, cid, semester);
+        if (enrolment == null) return false;
+        enrolments.remove(enrolment);
+        return true;
     }
 
     @Override
@@ -68,6 +72,15 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
     @Override
     public List<Student> getStudents() {
         return students;
+    }
+
+    @Override
+    public Enrolment getEnrolment(String sid, String cid, String semester) {
+        return enrolments.stream()
+                .filter(e -> e.getStudent().getId().equals(sid)
+                        && e.getCourse().getId().equals(cid)
+                        && e.getSemester().equals(semester))
+                .findFirst().orElse(null);
     }
 
     public Student getStudentById(String sid) {

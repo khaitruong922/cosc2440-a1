@@ -72,6 +72,10 @@ public class EnrolmentMenu extends Menu {
         String semester = inputService.getSemesterInput();
         if (semester.isEmpty()) return;
         Enrolment enrolment = enrolmentService.addEnrolment(sid, cid, semester);
+        if (enrolment == null) {
+            System.out.println("Enrolment of student " + sid + " in course " + cid + " in semester " + semester + " already exists!");
+            return;
+        }
         System.out.println("Enroll student successfully!");
         EnrolmentService.displayFromList(Collections.singletonList(enrolment));
     }

@@ -27,13 +27,13 @@ public class EnrolmentUpdateMenu extends Menu {
             waitForEnter();
             run();
         }));
-        addOption(new Option("Add course", "2", () -> {
-            addCourse();
+        addOption(new Option("Enroll course", "2", () -> {
+            enrollCourse();
             waitForEnter();
             run();
         }));
-        addOption(new Option("Delete course", "3", () -> {
-            deleteCourse();
+        addOption(new Option("Drop course", "3", () -> {
+            dropCourse();
             waitForEnter();
             run();
         }));
@@ -44,10 +44,20 @@ public class EnrolmentUpdateMenu extends Menu {
 
     }
 
-    private void deleteCourse() {
+    private void dropCourse() {
+        viewEnrolledCourses();
+        String cid = inputService.getCidInput();
+        if (cid.isEmpty()) return;
+        List<Course> courses = courseService.getCoursesOfStudent(sid, semester);
+        Course course = courses.stream().filter(c -> c.getId().equals(cid)).findFirst().orElse(null);
+        if (course == null) {
+            System.out.println("Student " + sid + " does not enrolled in " + cid + " in " + semester);
+            return;
+        }
+        enrolmentService.deleteEnrolment(sid, cid, semester);
     }
 
-    private void addCourse() {
+    private void enrollCourse() {
     }
 
     private void viewEnrolledCourses() {
