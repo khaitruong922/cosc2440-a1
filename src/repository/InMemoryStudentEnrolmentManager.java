@@ -20,7 +20,10 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
         addCourse(new Course("COSC2440", "SADI", 12));
         addEnrolment("s3818074", "COSC2092", "2021A");
         addEnrolment("s3818075", "COSC2092", "2021A");
+        addEnrolment("s3818075", "COSC2092", "2021B");
         addEnrolment("s3818074", "COSC2440", "2021A");
+        courses.forEach(System.out::println);
+        enrolments.forEach(System.out::println);
     }
 
     public boolean addStudent(Student student) {
@@ -37,9 +40,11 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
 
 
     @Override
-    public Enrolment addEnrolment(String sid, String courseId, String semester) {
+    public Enrolment addEnrolment(String sid, String cid, String semester) {
         Student student = getStudentById(sid);
-        Course course = getCourseById(sid);
+        if (student == null) return null;
+        Course course = getCourseById(cid);
+        if (course == null) return null;
         Enrolment enrolment = new Enrolment(student, course, semester);
         enrolments.add(enrolment);
         return enrolment;

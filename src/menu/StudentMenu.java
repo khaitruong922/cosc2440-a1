@@ -1,21 +1,31 @@
 package menu;
 
+import menu.model.InputField;
 import menu.model.Menu;
 import menu.model.Option;
-import menu.model.Table;
+import model.Course;
 import model.Student;
-import repository.InMemoryStudentEnrolmentManager;
 import repository.StudentEnrolmentManager;
+import service.CourseService;
+import service.InputService;
+import service.StudentService;
 
 import java.util.List;
 
 public class StudentMenu extends Menu {
-    private final StudentEnrolmentManager sem;
+    private final StudentService studentService;
+    private final InputService inputService;
 
     public StudentMenu(StudentEnrolmentManager sem) {
-        this.sem = sem;
+        this.studentService = new StudentService(sem);
+        this.inputService = new InputService(sem);
         addOption(new Option("View students", "1", () -> {
             viewStudents();
+            waitForEnter();
+            run();
+        }));
+        addOption(new Option("View students in course", "2", () -> {
+            viewStudentsInCourse();
             waitForEnter();
             run();
         }));
@@ -24,12 +34,15 @@ public class StudentMenu extends Menu {
         }));
     }
 
+    private void viewStudentsInCourse() {
+        String cid = inputService.getCidInput();
+        String semester = inputService.getSemesterInput();
+        List<Student> students = studentService.getStudentsInCourse(cid, semester);
+        StudentService.displayFromList(students);
+    }
+
     private void viewStudents() {
-        List<Student> students = sem.getStudents();
-        Table table = new Table(Student.getFields());
-        students.forEach(s -> {
-            table.addRow(s.toRecord());
-        });
-        table.display();
+        List<Student> students = studentService.getStudents();
+        StudentService.displayFromList(students);
     }
 }

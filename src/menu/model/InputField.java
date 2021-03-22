@@ -5,7 +5,7 @@ import validator.Validator;
 import java.util.Scanner;
 
 public class InputField {
-    private final String label;
+    private String label;
     private boolean required = false;
     private Validator validator = null;
 
@@ -31,6 +31,11 @@ public class InputField {
 
     public InputField required() {
         required = true;
+        return this;
+    }
+
+    public InputField setLabel(String label) {
+        this.label = label;
         return this;
     }
 

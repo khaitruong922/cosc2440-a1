@@ -2,7 +2,6 @@ package menu;
 
 import menu.model.Menu;
 import menu.model.Option;
-import repository.InMemoryStudentEnrolmentManager;
 import repository.StudentEnrolmentManager;
 
 public class MainMenu extends Menu {
