@@ -36,7 +36,9 @@ public class StudentMenu extends Menu {
 
     private void viewStudentsInCourse() {
         String cid = inputService.getCidInput();
+        if (cid.isEmpty()) return;
         String semester = inputService.getSemesterInput();
+        if (semester.isEmpty()) return;
         List<Student> students = studentService.getStudentsInCourse(cid, semester);
         StudentService.displayFromList(students);
     }

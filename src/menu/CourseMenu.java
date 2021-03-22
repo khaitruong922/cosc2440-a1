@@ -37,6 +37,7 @@ public class CourseMenu extends Menu {
 
     private void viewCoursesInSemester() {
         String semester = inputService.getSemesterInput();
+        if (semester.isEmpty()) return;
         List<Course> coursesInSemester = courseService.getCoursesInSemester(semester);
         CourseService.displayFromList(coursesInSemester);
 

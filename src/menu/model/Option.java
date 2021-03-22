@@ -4,7 +4,7 @@ public class Option {
     private final String label;
     private final String toggleKey;
     private final Command command;
-    private static String[] fields = new String[]{"Input", "Action"};
+    private static final String[] fields = new String[]{"Input", "Action"};
 
     public static String[] getFields() {
         return fields;

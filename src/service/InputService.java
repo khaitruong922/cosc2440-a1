@@ -13,19 +13,19 @@ public class InputService {
 
     public InputService(StudentEnrolmentManager sem) {
         this.sem = sem;
-        sidInputField = new InputField("Student ID: ").required().setValidator(input -> {
+        sidInputField = new InputField("Student ID: ").setValidator(input -> {
             Student s = this.sem.getStudentById(input);
             if (s != null) return true;
             System.out.println("Student ID " + input + " does not exist.");
             return false;
         });
-        cidInputField = new InputField("Course ID: ").required().setValidator(input -> {
+        cidInputField = new InputField("Course ID: ").setValidator(input -> {
             Course c = this.sem.getCourseById(input);
             if (c != null) return true;
             System.out.println("Course ID " + input + " does not exist.");
             return false;
         });
-        semesterInputField = new InputField("Semester: ").required();
+        semesterInputField = new InputField("Semester: ");
     }
 
     public String getSidInput() {
@@ -39,5 +39,4 @@ public class InputService {
     public String getSemesterInput() {
         return semesterInputField.getInput();
     }
-
 }

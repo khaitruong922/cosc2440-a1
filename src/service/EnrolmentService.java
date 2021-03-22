@@ -1,10 +1,12 @@
 package service;
 
 import menu.model.Table;
+import model.Course;
 import model.Enrolment;
 import repository.StudentEnrolmentManager;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EnrolmentService {
     private final StudentEnrolmentManager sem;
@@ -29,4 +31,6 @@ public class EnrolmentService {
     public List<Enrolment> getEnrolments() {
         return sem.getEnrolments();
     }
+
+
 }

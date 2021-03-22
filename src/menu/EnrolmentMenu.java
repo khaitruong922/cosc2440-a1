@@ -8,18 +8,25 @@ import model.Course;
 import model.Enrolment;
 import model.Student;
 import repository.StudentEnrolmentManager;
+import service.CourseService;
 import service.EnrolmentService;
 import service.InputService;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class EnrolmentMenu extends Menu {
     private final EnrolmentService enrolmentService;
     private final InputService inputService;
+    private final EnrolmentUpdateMenu enrolmentUpdateMenu;
+
 
     public EnrolmentMenu(StudentEnrolmentManager sem) {
         this.enrolmentService = new EnrolmentService(sem);
         this.inputService = new InputService(sem);
+        this.enrolmentUpdateMenu = new EnrolmentUpdateMenu(sem);
+
         addOption(new Option("View enrolments", "1", () -> {
             viewEnrolments();
             waitForEnter();
@@ -30,11 +37,26 @@ public class EnrolmentMenu extends Menu {
             waitForEnter();
             run();
         }));
+        addOption(new Option("Update enrolments", "3", () -> {
+            updateEnrolments();
+            run();
+        }));
         addOption(new Option("Back", "4", () -> {
 
         }));
 
 
+    }
+
+    private void updateEnrolments() {
+        String sid = inputService.getSidInput();
+        if (sid.isEmpty()) return;
+        String semester = inputService.getSemesterInput();
+        if (semester.isEmpty()) return;
+        System.out.println("You are now updating enrolment information of " + sid + " in semester " + semester);
+        enrolmentUpdateMenu.setSid(sid);
+        enrolmentUpdateMenu.setSemester(semester);
+        enrolmentUpdateMenu.run();
     }
 
     private void viewEnrolments() {
@@ -44,12 +66,13 @@ public class EnrolmentMenu extends Menu {
 
     public void enroll() {
         String sid = inputService.getSidInput();
+        if (sid.isEmpty()) return;
         String cid = inputService.getCidInput();
+        if (cid.isEmpty()) return;
         String semester = inputService.getSemesterInput();
+        if (semester.isEmpty()) return;
         Enrolment enrolment = enrolmentService.addEnrolment(sid, cid, semester);
         System.out.println("Enroll student successfully!");
-        Table table = new Table(Student.getFields());
-        table.addRow(enrolment.toRecord());
-        table.display();
+        EnrolmentService.displayFromList(Collections.singletonList(enrolment));
     }
 }

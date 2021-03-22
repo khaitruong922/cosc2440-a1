@@ -26,10 +26,18 @@ public class CourseService {
     }
 
     public List<Course> getCoursesInSemester(String semester) {
-        return sem.getEnrolments().stream().filter(e -> e.getSemester().equals(semester)).map(Enrolment::getCourse).distinct().collect(Collectors.toList());
+        return sem.getEnrolments().stream()
+                .filter(e -> e.getSemester().equals(semester))
+                .map(Enrolment::getCourse).distinct().collect(Collectors.toList());
     }
 
     public List<Course> getCourses() {
         return sem.getCourses();
+    }
+
+    public List<Course> getCoursesOfStudent(String sid, String semester) {
+        return sem.getEnrolments().stream()
+                .filter(e -> e.getStudent().getId().equals(sid) && e.getSemester().equals(semester))
+                .map(Enrolment::getCourse).distinct().collect(Collectors.toList());
     }
 }

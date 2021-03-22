@@ -30,8 +30,8 @@ public class StudentService {
     }
 
     public List<Student> getStudentsInCourse(String cid, String semester) {
-        return sem.getEnrolments().stream().filter(e ->
-                e.getCourse().getId().equals(cid) && e.getSemester().equals(semester))
+        return sem.getEnrolments().stream()
+                .filter(e -> e.getCourse().getId().equals(cid) && e.getSemester().equals(semester))
                 .map(Enrolment::getStudent).distinct().collect(Collectors.toList());
     }
 }
