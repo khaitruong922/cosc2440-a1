@@ -1,9 +1,9 @@
 package model;
 
 public class Enrolment implements Model {
-    private Student student;
-    private Course course;
-    private String semester;
+    private final Student student;
+    private final Course course;
+    private final String semester;
 
     private final static String[] fields = {"Student ID", "Course ID", "Semester"};
 
@@ -25,24 +25,12 @@ public class Enrolment implements Model {
         return student;
     }
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
     public Course getCourse() {
         return course;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
     public String getSemester() {
         return semester;
-    }
-
-    public void setSemester(String semester) {
-        this.semester = semester;
     }
 
     @Override

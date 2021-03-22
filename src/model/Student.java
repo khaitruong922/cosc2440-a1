@@ -3,11 +3,11 @@ package model;
 import java.util.Date;
 
 public class Student implements Model {
-    private String id;
-    private String name;
-    private Date birthDate;
+    private final String id;
+    private final String name;
+    private final Date birthDate;
 
-    private final static String[] fields = {"ID", "Name", "Birth Date"};
+    private final static String[] fields = {"Student ID", "Name", "Birth Date"};
 
     public static String[] getFields() {
         return fields;
@@ -23,24 +23,12 @@ public class Student implements Model {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Date getBirthDate() {
         return birthDate;
-    }
-
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
     }
 
     @Override

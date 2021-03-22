@@ -51,10 +51,11 @@ public class EnrolmentUpdateMenu extends Menu {
         List<Course> courses = courseService.getCoursesOfStudent(sid, semester);
         Course course = courses.stream().filter(c -> c.getId().equals(cid)).findFirst().orElse(null);
         if (course == null) {
-            System.out.println("Student " + sid + " does not enrolled in " + cid + " in " + semester);
+            System.out.println("Student " + sid + " does not enrolled in " + cid + " in semester " + semester);
             return;
         }
         enrolmentService.deleteEnrolment(sid, cid, semester);
+        System.out.println("Drop course " + cid + " successfully for " + sid + " in semester " + semester);
         viewEnrolledCourses();
     }
 
@@ -65,15 +66,17 @@ public class EnrolmentUpdateMenu extends Menu {
         List<Course> courses = courseService.getCoursesOfStudent(sid, semester);
         Course course = courses.stream().filter(c -> c.getId().equals(cid)).findFirst().orElse(null);
         if (course != null) {
-            System.out.println("Student " + sid + " has already enrolled in " + cid + " in " + semester);
+            System.out.println("Student " + sid + " has already enrolled in " + cid + " in semester " + semester);
             return;
         }
         enrolmentService.addEnrolment(sid, cid, semester);
+        System.out.println("Enroll course " + cid + " successfully for " + sid + " in semester " + semester);
         viewEnrolledCourses();
     }
 
     private void viewEnrolledCourses() {
         List<Course> courses = courseService.getCoursesOfStudent(sid, semester);
+        System.out.println("Enrolment info of " + sid + " in semester " + semester);
         CourseService.displayFromList(courses);
     }
 

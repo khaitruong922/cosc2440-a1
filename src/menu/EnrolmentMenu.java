@@ -53,7 +53,7 @@ public class EnrolmentMenu extends Menu {
         if (sid.isEmpty()) return;
         String semester = inputService.getSemesterInput();
         if (semester.isEmpty()) return;
-        System.out.println("You are now updating enrolment information of " + sid + " in semester " + semester);
+        System.out.println("You are now updating enrolment info of " + sid + " in semester " + semester);
         enrolmentUpdateMenu.setSid(sid);
         enrolmentUpdateMenu.setSemester(semester);
         enrolmentUpdateMenu.run();

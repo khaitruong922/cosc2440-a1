@@ -15,15 +15,18 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
 
     public InMemoryStudentEnrolmentManager() {
         addStudent(new Student("s3818074", "Khai Truong", null));
-        addStudent(new Student("s3818075", "Khai Truong", null));
+        addStudent(new Student("s3818075", "Tsuu", null));
+        addStudent(new Student("s3818076", "Tsuuu", null));
         addCourse(new Course("COSC2092", "Machine Learning", 24));
-        addCourse(new Course("COSC2440", "SADI", 12));
+        addCourse(new Course("COSC2440", "Software Architecture: Design & Implementation", 12));
+        addCourse(new Course("COSC2441", "Software Engineering Design", 12));
         addEnrolment("s3818074", "COSC2092", "2021A");
-        addEnrolment("s3818075", "COSC2092", "2021A");
-        addEnrolment("s3818075", "COSC2092", "2021B");
         addEnrolment("s3818074", "COSC2440", "2021A");
-        courses.forEach(System.out::println);
-        enrolments.forEach(System.out::println);
+        addEnrolment("s3818074", "COSC2441", "2021B");
+        addEnrolment("s3818075", "COSC2092", "2021A");
+        addEnrolment("s3818075", "COSC2441", "2021A");
+        addEnrolment("s3818076", "COSC2441", "2021B");
+        addEnrolment("s3818076", "COSC2440", "2021B");
     }
 
     public boolean addStudent(Student student) {

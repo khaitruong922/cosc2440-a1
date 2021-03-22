@@ -30,7 +30,7 @@ public class CourseMenu extends Menu {
             waitForEnter();
             run();
         }));
-        addOption(new Option("Back", "4", () -> {
+        addOption(new Option("Back", "3", () -> {
 
         }));
     }

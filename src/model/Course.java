@@ -1,11 +1,11 @@
 package model;
 
 public class Course implements Model {
-    private String id;
-    private String name;
-    private int numberOfCredits;
+    private final String id;
+    private final String name;
+    private final int numberOfCredits;
 
-    private final static String[] fields = {"ID", "Name", "Number of Credits"};
+    private final static String[] fields = {"Course ID", "Name", "Number of Credits"};
 
     public static String[] getFields() {
         return fields;
@@ -21,25 +21,15 @@ public class Course implements Model {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getNumberOfCredits() {
         return numberOfCredits;
     }
 
-    public void setNumberOfCredits(int numberOfCredits) {
-        this.numberOfCredits = numberOfCredits;
-    }
 
     @Override
     public String toString() {

@@ -36,6 +36,6 @@ public class MainMenu extends Menu {
     }
 
     private void quit() {
-        System.out.println("Program exits.");
+        System.out.println("See you again!");
     }
 }
