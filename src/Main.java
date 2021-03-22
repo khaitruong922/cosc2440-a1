@@ -1,9 +1,11 @@
 import menu.MainMenu;
+import repository.InMemoryStudentEnrolmentManager;
+import repository.StudentEnrolmentManager;
 
 public class Main {
     public static void main(String[] args) {
-
-        MainMenu mainMenu = new MainMenu();
+        StudentEnrolmentManager sem = new InMemoryStudentEnrolmentManager();
+        MainMenu mainMenu = new MainMenu(sem);
         mainMenu.run();
     }
 

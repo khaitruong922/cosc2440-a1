@@ -10,15 +10,16 @@ import repository.StudentEnrolmentManager;
 import java.util.List;
 
 public class StudentMenu extends Menu {
-    private final StudentEnrolmentManager sem = new InMemoryStudentEnrolmentManager();
+    private final StudentEnrolmentManager sem;
 
-    public StudentMenu() {
-        optionMenu.add(new Option("View students", "1", () -> {
+    public StudentMenu(StudentEnrolmentManager sem) {
+        this.sem = sem;
+        addOption(new Option("View students", "1", () -> {
             viewStudents();
             waitForEnter();
             run();
         }));
-        optionMenu.add(new Option("Back", "4", () -> {
+        addOption(new Option("Back", "4", () -> {
 
         }));
     }

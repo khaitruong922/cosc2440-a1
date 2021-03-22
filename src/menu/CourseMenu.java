@@ -13,21 +13,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CourseMenu extends Menu {
-    private final StudentEnrolmentManager sem = new InMemoryStudentEnrolmentManager();
+    private final StudentEnrolmentManager sem;
     private final InputField semesterInput;
 
-    public CourseMenu() {
-        optionMenu.add(new Option("View courses", "1", () -> {
+    public CourseMenu(StudentEnrolmentManager sem) {
+        this.sem = sem;
+        addOption(new Option("View courses", "1", () -> {
             viewCourses();
             waitForEnter();
             run();
         }));
-        optionMenu.add(new Option("View courses in semester", "2", () -> {
+        addOption(new Option("View courses in semester", "2", () -> {
             viewCoursesInSemester();
             waitForEnter();
             run();
         }));
-        optionMenu.add(new Option("Back", "4", () -> {
+        addOption(new Option("Back", "4", () -> {
 
         }));
         semesterInput = new InputField("Semester: ").required();

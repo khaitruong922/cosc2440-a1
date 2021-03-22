@@ -13,23 +13,24 @@ import repository.StudentEnrolmentManager;
 import java.util.List;
 
 public class EnrolmentMenu extends Menu {
-    private final StudentEnrolmentManager sem = new InMemoryStudentEnrolmentManager();
+    private final StudentEnrolmentManager sem;
     private final InputField sidInput;
     private final InputField cidInput;
     private final InputField semesterInput;
 
-    public EnrolmentMenu() {
-        optionMenu.add(new Option("View enrolments", "1", () -> {
+    public EnrolmentMenu(StudentEnrolmentManager sem) {
+        this.sem = sem;
+        addOption(new Option("View enrolments", "1", () -> {
             viewEnrolments();
             waitForEnter();
             run();
         }));
-        optionMenu.add(new Option("Enroll", "2", () -> {
+        addOption(new Option("Enroll", "2", () -> {
             enroll();
             waitForEnter();
             run();
         }));
-        optionMenu.add(new Option("Back", "4", () -> {
+        addOption(new Option("Back", "4", () -> {
 
         }));
         sidInput = new InputField("Student ID: ").required().setValidator(input -> {

@@ -7,26 +7,30 @@ import repository.StudentEnrolmentManager;
 
 public class MainMenu extends Menu {
 
-    private final StudentEnrolmentManager sem = new InMemoryStudentEnrolmentManager();
-    private final Menu studentMenu = new StudentMenu();
-    private final Menu courseMenu = new CourseMenu();
-    private final Menu enrolmentMenu = new EnrolmentMenu();
+    private final StudentEnrolmentManager sem;
+    private final Menu studentMenu;
+    private final Menu courseMenu;
+    private final Menu enrolmentMenu;
 
 
-    public MainMenu() {
-        optionMenu.add(new Option("Manage students", "1", () -> {
+    public MainMenu(StudentEnrolmentManager sem) {
+        this.sem = sem;
+        studentMenu = new StudentMenu(sem);
+        courseMenu = new CourseMenu(sem);
+        enrolmentMenu = new EnrolmentMenu(sem);
+        addOption(new Option("Manage students", "1", () -> {
             studentMenu.run();
             run();
         }));
-        optionMenu.add(new Option("Manage courses", "2", () -> {
+        addOption(new Option("Manage courses", "2", () -> {
             courseMenu.run();
             run();
         }));
-        optionMenu.add(new Option("Manage enrolments", "3", () -> {
+        addOption(new Option("Manage enrolments", "3", () -> {
             enrolmentMenu.run();
             run();
         }));
-        optionMenu.add(new Option("Quit", "4", () -> {
+        addOption(new Option("Quit", "4", () -> {
             quit();
         }));
 
