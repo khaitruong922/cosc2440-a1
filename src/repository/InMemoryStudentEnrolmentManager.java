@@ -14,10 +14,10 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
     private final List<Course> courses = new ArrayList<>();
 
     public InMemoryStudentEnrolmentManager() {
-        students.add(new Student("s3818074", "Khai Truong", null));
-        students.add(new Student("s3818075", "Khai Truong 2", null));
-        courses.add(new Course("COSC2092", "Machine Learning", 24));
-        courses.add(new Course("COSC2440", "SADI", 12));
+        addStudent(new Student("s3818074", "Khai Truong", null));
+        addStudent(new Student("s3818075", "Khai Truong", null));
+        addCourse(new Course("COSC2092", "Machine Learning", 24));
+        addCourse(new Course("COSC2440", "SADI", 12));
         addEnrolment("s3818074", "COSC2092", "2021A");
         addEnrolment("s3818075", "COSC2092", "2021A");
         addEnrolment("s3818074", "COSC2440", "2021A");
@@ -37,21 +37,16 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
 
 
     @Override
-    public Enrolment addEnrolment(String studentId, String courseId, String semester) {
-        Student student = getStudentById(studentId);
-        Course course = getCourseById(courseId);
+    public Enrolment addEnrolment(String sid, String courseId, String semester) {
+        Student student = getStudentById(sid);
+        Course course = getCourseById(sid);
         Enrolment enrolment = new Enrolment(student, course, semester);
         enrolments.add(enrolment);
         return enrolment;
     }
 
     @Override
-    public boolean updateEnrolment(String studentId) {
-        return false;
-    }
-
-    @Override
-    public boolean deleteEnrolment(String studentId) {
+    public boolean deleteEnrolment(String sid, String cid, String semester) {
         return false;
     }
 
@@ -70,11 +65,11 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
         return students;
     }
 
-    public Student getStudentById(String studentId) {
-        return students.stream().filter(s -> s.getId().equals(studentId)).findFirst().orElse(null);
+    public Student getStudentById(String sid) {
+        return students.stream().filter(s -> s.getId().equals(sid)).findFirst().orElse(null);
     }
 
-    public Course getCourseById(String courseId) {
-        return courses.stream().filter(c -> c.getId().equals(courseId)).findFirst().orElse(null);
+    public Course getCourseById(String cid) {
+        return courses.stream().filter(c -> c.getId().equals(cid)).findFirst().orElse(null);
     }
 }

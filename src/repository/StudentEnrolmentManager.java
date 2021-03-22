@@ -7,11 +7,9 @@ import model.Student;
 import java.util.List;
 
 public interface StudentEnrolmentManager {
-    Enrolment addEnrolment(String studentId, String courseId, String semester);
+    Enrolment addEnrolment(String sid, String cid, String semester);
 
-    boolean updateEnrolment(String studentId);
-
-    boolean deleteEnrolment(String studentId);
+    boolean deleteEnrolment(String sid, String cid, String semester);
 
     List<Enrolment> getEnrolments();
 
