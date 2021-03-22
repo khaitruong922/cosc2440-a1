@@ -9,6 +9,7 @@ public class InputService {
     private final InputField cidInputField;
     private final InputField sidInputField;
     private final InputField semesterInputField;
+    private final InputField saveReportInputField;
     private final StudentEnrolmentManager sem;
 
     public InputService(StudentEnrolmentManager sem) {
@@ -26,6 +27,7 @@ public class InputService {
             return false;
         });
         semesterInputField = new InputField("Semester: ");
+        saveReportInputField = new InputField("Do you want to save these records to CSV files? (y: yes): ");
     }
 
     public String getSidInput() {
@@ -39,4 +41,9 @@ public class InputService {
     public String getSemesterInput() {
         return semesterInputField.getInput();
     }
+
+    public String getSaveReportInput() {
+        return saveReportInputField.getInput();
+    }
+
 }

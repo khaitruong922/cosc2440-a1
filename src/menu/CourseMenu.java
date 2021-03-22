@@ -1,17 +1,14 @@
 package menu;
 
-import menu.model.InputField;
 import menu.model.Menu;
 import menu.model.Option;
 import model.Course;
-import model.Enrolment;
 import repository.StudentEnrolmentManager;
 import service.CourseService;
 import service.InputService;
-import service.StudentService;
+import writer.CSVWriter;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CourseMenu extends Menu {
     private final CourseService courseService;
@@ -30,17 +27,40 @@ public class CourseMenu extends Menu {
             waitForEnter();
             run();
         }));
-        addOption(new Option("Back", "3", () -> {
+        addOption(new Option("View courses of student in semester", "3", () -> {
+            viewCoursesOfStudentInSemester();
+            waitForEnter();
+            run();
+        }));
+        addOption(new Option("Back", "4", () -> {
 
         }));
+    }
+
+    private void viewCoursesOfStudentInSemester() {
+        String sid = inputService.getSidInput();
+        if (sid.isEmpty()) return;
+        String semester = inputService.getSemesterInput();
+        if (semester.isEmpty()) return;
+        List<Course> courses = courseService.getCoursesOfStudentInSemester(sid, semester);
+        CourseService.displayFromList(courses);
+        String saveReport = inputService.getSaveReportInput();
+        if (saveReport.equals("y")) {
+            CSVWriter csvWriter = new CSVWriter("courses", sid, semester);
+            csvWriter.write(courses);
+        }
     }
 
     private void viewCoursesInSemester() {
         String semester = inputService.getSemesterInput();
         if (semester.isEmpty()) return;
-        List<Course> coursesInSemester = courseService.getCoursesInSemester(semester);
-        CourseService.displayFromList(coursesInSemester);
-
+        List<Course> courses = courseService.getCoursesInSemester(semester);
+        CourseService.displayFromList(courses);
+        String saveReport = inputService.getSaveReportInput();
+        if (saveReport.equals("y")) {
+            CSVWriter csvWriter = new CSVWriter("courses", semester);
+            csvWriter.write(courses);
+        }
     }
 
     private void viewCourses() {

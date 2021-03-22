@@ -42,6 +42,11 @@ public class Student implements Model {
 
     @Override
     public String[] toRecord() {
-        return new String[]{id, name, birthDate == null ? "" : birthDate.toString()};
+        return new String[]{id, name, birthDate == null ? "null" : birthDate.toString()};
+    }
+
+    @Override
+    public String toCSVString() {
+        return String.join(",", id, name, birthDate == null ? "null" : birthDate.toString()) + "\n";
     }
 }

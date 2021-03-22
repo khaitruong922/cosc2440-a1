@@ -15,6 +15,11 @@ public class Enrolment implements Model {
         return new String[]{student.getId(), course.getId(), semester};
     }
 
+    @Override
+    public String toCSVString() {
+        return String.join(",",student.getId(),course.getId(),getSemester()) + "\n";
+    }
+
     public Enrolment(Student student, Course course, String semester) {
         this.student = student;
         this.course = course;

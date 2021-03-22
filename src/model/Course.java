@@ -44,4 +44,10 @@ public class Course implements Model {
     public String[] toRecord() {
         return new String[]{id, name, String.valueOf(numberOfCredits)};
     }
+
+    @Override
+    public String toCSVString() {
+        return String.join(",", id, name, String.valueOf(numberOfCredits)) + "\n";
+
+    }
 }

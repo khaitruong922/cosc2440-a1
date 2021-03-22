@@ -35,7 +35,7 @@ public class CourseService {
         return sem.getCourses();
     }
 
-    public List<Course> getCoursesOfStudent(String sid, String semester) {
+    public List<Course> getCoursesOfStudentInSemester(String sid, String semester) {
         return sem.getEnrolments().stream()
                 .filter(e -> e.getStudent().getId().equals(sid) && e.getSemester().equals(semester))
                 .map(Enrolment::getCourse).distinct().collect(Collectors.toList());

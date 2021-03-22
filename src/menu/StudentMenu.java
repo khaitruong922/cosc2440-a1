@@ -9,6 +9,7 @@ import repository.StudentEnrolmentManager;
 import service.CourseService;
 import service.InputService;
 import service.StudentService;
+import writer.CSVWriter;
 
 import java.util.List;
 
@@ -41,6 +42,11 @@ public class StudentMenu extends Menu {
         if (semester.isEmpty()) return;
         List<Student> students = studentService.getStudentsInCourse(cid, semester);
         StudentService.displayFromList(students);
+        String saveReport = inputService.getSaveReportInput();
+        if (saveReport.equals("y")) {
+            CSVWriter csvWriter = new CSVWriter("students", cid);
+            csvWriter.write(students);
+        }
     }
 
     private void viewStudents() {
