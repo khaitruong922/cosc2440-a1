@@ -4,6 +4,7 @@ public class Course implements Model {
     private String id;
     private String name;
     private int numberOfCredits;
+
     private final static String[] fields = {"ID", "Name", "Number of Credits"};
 
     public static String[] getFields() {

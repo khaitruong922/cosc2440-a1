@@ -6,6 +6,7 @@ public class Student implements Model {
     private String id;
     private String name;
     private Date birthDate;
+
     private final static String[] fields = {"ID", "Name", "Birth Date"};
 
     public static String[] getFields() {

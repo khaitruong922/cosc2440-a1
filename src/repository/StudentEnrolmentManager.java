@@ -7,7 +7,7 @@ import model.Student;
 import java.util.List;
 
 public interface StudentEnrolmentManager {
-    boolean addEnrolment(String studentId, String courseId, String semester);
+    Enrolment addEnrolment(String studentId, String courseId, String semester);
 
     boolean updateEnrolment(String studentId);
 
@@ -15,15 +15,11 @@ public interface StudentEnrolmentManager {
 
     List<Enrolment> getEnrolments();
 
-    List<Enrolment> getEnrolmentsByCourseId(String courseId);
+    List<Course> getCourses();
 
-    List<Enrolment> getEnrolmentsByStudentId(String studentId);
+    List<Student> getStudents();
 
-    List<Course> getCoursesInSemester(String semester);
+    Course getCourseById(String id);
 
-    List<Course> getCoursesOfStudentInSemseter(String studentId, String semester);
-
-    List<Student> getStudentsInCourseInSemester(String courseId, String semester);
-
-    List<String> getSemesters();
+    Student getStudentById(String id);
 }

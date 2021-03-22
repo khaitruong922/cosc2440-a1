@@ -4,6 +4,7 @@ public class Enrolment implements Model {
     private Student student;
     private Course course;
     private String semester;
+
     private final static String[] fields = {"Student ID", "Course ID", "Semester"};
 
     public static String[] getFields() {
