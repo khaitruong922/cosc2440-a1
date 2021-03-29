@@ -1,5 +1,6 @@
 package test;
 
+import model.Course;
 import model.Student;
 import repository.InMemoryStudentEnrolmentManager;
 import repository.StudentEnrolmentManager;
@@ -9,8 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class AddStudentTest {
-
+class AddCourseTest {
     private StudentEnrolmentManager sem = new InMemoryStudentEnrolmentManager();
 
     @BeforeEach
@@ -20,14 +20,14 @@ class AddStudentTest {
 
     @Test
     public void shouldAddToListWithNonExistingId() {
-        boolean success = sem.addStudent(new Student("s1234567", "Khai Truong", null));
+        boolean success = sem.addCourse(new Course("COSC2000", "Intro to Programming", 12));
         assertTrue(success);
     }
 
     @Test
     public void shouldNotAddToListWithExistingId() {
-        sem.addStudent(new Student("s1234567", "Khai Truong", null));
-        boolean success = sem.addStudent(new Student("s1234567", "Tsuu", null));
+        sem.addCourse(new Course("COSC2000", "Intro to Programming", 12));
+        boolean success = sem.addCourse(new Course("COSC2000", "Intro to Programming 2", 24));
         assertFalse(success);
     }
 

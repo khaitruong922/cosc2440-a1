@@ -14,6 +14,10 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
     private final List<Course> courses = new ArrayList<>();
 
     public InMemoryStudentEnrolmentManager() {
+
+    }
+
+    public void populateData() {
         addStudent(new Student("s3818074", "Khai Truong", null));
         addStudent(new Student("s3818075", "Tsuu", null));
         addStudent(new Student("s3818076", "Tsuuu", null));

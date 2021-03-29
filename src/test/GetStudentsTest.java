@@ -1,16 +1,15 @@
 package test;
 
+import model.Course;
 import model.Student;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import repository.InMemoryStudentEnrolmentManager;
 import repository.StudentEnrolmentManager;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class AddStudentTest {
-
+public class GetStudentsTest {
     private StudentEnrolmentManager sem = new InMemoryStudentEnrolmentManager();
 
     @BeforeEach
@@ -19,16 +18,13 @@ class AddStudentTest {
     }
 
     @Test
-    public void shouldAddToListWithNonExistingId() {
-        boolean success = sem.addStudent(new Student("s1234567", "Khai Truong", null));
-        assertTrue(success);
+    public void emptyOnCreation() {
+        assertEquals(sem.getStudents().size(), 0);
     }
 
     @Test
-    public void shouldNotAddToListWithExistingId() {
+    public void increaseSizeOnAdded() {
         sem.addStudent(new Student("s1234567", "Khai Truong", null));
-        boolean success = sem.addStudent(new Student("s1234567", "Tsuu", null));
-        assertFalse(success);
+        assertEquals(sem.getStudents().size(), 1);
     }
-
 }
