@@ -7,6 +7,10 @@ import model.Student;
 import java.util.List;
 
 public interface StudentEnrolmentManager {
+    boolean addStudent(Student student);
+
+    boolean addCourse(Course course);
+
     Enrolment addEnrolment(String sid, String cid, String semester);
 
     boolean deleteEnrolment(String sid, String cid, String semester);
