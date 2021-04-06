@@ -39,9 +39,9 @@ public class InputField {
         return this;
     }
 
-    private static final InputField enterInput = new InputField("Press Enter to continue...");
+    private static final InputField enterInputField = new InputField("Press Enter to continue...");
 
     public static void waitForEnter() {
-        enterInput.getInput();
+        enterInputField.getInput();
     }
 }
