@@ -33,7 +33,7 @@ public class EnrolmentService {
     }
 
 
-    public void deleteEnrolment(String sid, String cid, String semester) {
-        sem.deleteEnrolment(sid, cid, semester);
+    public boolean deleteEnrolment(String sid, String cid, String semester) {
+        return sem.deleteEnrolment(sid, cid, semester);
     }
 }
