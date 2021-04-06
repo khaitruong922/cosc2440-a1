@@ -25,14 +25,17 @@ public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager 
     }
 
     private void populateStudents() {
+        students.clear();
         students.addAll(csvService.getStudentsFromCsvFile("students.csv"));
     }
 
     private void populateCourses() {
+        courses.clear();
         courses.addAll(csvService.getCoursesFromCsvFile("courses.csv"));
     }
 
     private void populateEnrolments() {
+        enrolments.clear();
         enrolments.addAll(csvService.getEnrolmentsFromCsvFile("enrolments.csv"));
     }
 
