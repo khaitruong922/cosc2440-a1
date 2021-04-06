@@ -5,7 +5,7 @@ import validator.Validator;
 import java.util.Scanner;
 
 public class InputField {
-    private String label;
+    private final String label;
     private boolean required = false;
     private Validator validator = null;
 
@@ -34,17 +34,12 @@ public class InputField {
         return this;
     }
 
-    public InputField setLabel(String label) {
-        this.label = label;
-        return this;
-    }
-
     public InputField setValidator(Validator validator) {
         this.validator = validator;
         return this;
     }
 
-    public static InputField enterInput = new InputField("Press Enter to continue...");
+    private static final InputField enterInput = new InputField("Press Enter to continue...");
 
     public static void waitForEnter() {
         enterInput.getInput();
