@@ -1,4 +1,4 @@
-package menu.model;
+package helper;
 
 import java.util.ArrayList;
 import java.util.List;

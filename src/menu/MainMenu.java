@@ -1,7 +1,6 @@
 package menu;
 
-import menu.model.Menu;
-import menu.model.Option;
+import helper.Option;
 import repository.StudentEnrolmentManager;
 
 public class MainMenu extends Menu {

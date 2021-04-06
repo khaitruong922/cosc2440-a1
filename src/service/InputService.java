@@ -1,6 +1,6 @@
 package service;
 
-import menu.model.InputField;
+import helper.InputField;
 import model.Course;
 import model.Student;
 import repository.StudentEnrolmentManager;

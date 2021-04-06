@@ -1,4 +1,4 @@
-package menu.model;
+package helper;
 
 public interface Validator {
     boolean validate(String input);

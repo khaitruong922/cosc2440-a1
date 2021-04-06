@@ -1,4 +1,4 @@
-package menu.model;
+package helper;
 
 import java.util.Scanner;
 

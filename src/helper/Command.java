@@ -1,4 +1,4 @@
-package menu.model;
+package helper;
 
 public interface Command {
     void execute();

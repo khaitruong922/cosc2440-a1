@@ -1,7 +1,6 @@
 package menu;
 
-import menu.model.Menu;
-import menu.model.Option;
+import helper.Option;
 import model.Course;
 import repository.StudentEnrolmentManager;
 import service.CourseService;
