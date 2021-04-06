@@ -1,10 +1,11 @@
 package menu.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu {
-    private final ArrayList<Option> options = new ArrayList<>();
+    private final List<Option> options = new ArrayList<>();
 
     protected void addOption(Option option) {
         options.add(option);
