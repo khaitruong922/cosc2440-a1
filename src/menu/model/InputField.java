@@ -1,7 +1,5 @@
 package menu.model;
 
-import validator.Validator;
-
 import java.util.Scanner;
 
 public class InputField {

@@ -1,5 +1,10 @@
 package model;
 
+import helper.DateParser;
+
+import java.text.ParseException;
+import java.util.Date;
+
 public class Enrolment implements Model {
     private final Student student;
     private final Course course;
@@ -17,7 +22,7 @@ public class Enrolment implements Model {
 
     @Override
     public String toCSVString() {
-        return String.join(",",student.getId(),course.getId(),getSemester()) + "\n";
+        return String.join(",", student.getId(), course.getId(), getSemester()) + "\n";
     }
 
     public Enrolment(Student student, Course course, String semester) {
@@ -46,5 +51,7 @@ public class Enrolment implements Model {
                 ", semester='" + semester + '\'' +
                 '}';
     }
+
+
 }
 

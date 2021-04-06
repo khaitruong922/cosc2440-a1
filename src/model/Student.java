@@ -1,5 +1,8 @@
 package model;
 
+import helper.DateParser;
+
+import java.text.ParseException;
 import java.util.Date;
 
 public class Student implements Model {
@@ -42,11 +45,11 @@ public class Student implements Model {
 
     @Override
     public String[] toRecord() {
-        return new String[]{id, name, birthDate == null ? "null" : birthDate.toString()};
+        return new String[]{id, name, DateParser.format(birthDate)};
     }
 
     @Override
     public String toCSVString() {
-        return String.join(",", id, name, birthDate == null ? "null" : birthDate.toString()) + "\n";
+        return String.join(",", id, name, DateParser.format(birthDate)) + "\n";
     }
 }

@@ -1,15 +1,12 @@
 package menu;
 
-import menu.model.InputField;
 import menu.model.Menu;
 import menu.model.Option;
-import model.Course;
 import model.Student;
 import repository.StudentEnrolmentManager;
-import service.CourseService;
 import service.InputService;
 import service.StudentService;
-import writer.CSVWriter;
+import csv.CSVWriter;
 
 import java.util.List;
 

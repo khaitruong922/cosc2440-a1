@@ -1,4 +1,4 @@
-package writer;
+package csv;
 
 import model.Model;
 

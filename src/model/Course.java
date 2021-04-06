@@ -50,4 +50,6 @@ public class Course implements Model {
         return String.join(",", id, name, String.valueOf(numberOfCredits)) + "\n";
 
     }
+
+
 }
