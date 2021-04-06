@@ -6,7 +6,7 @@ import model.Student;
 import repository.StudentEnrolmentManager;
 import service.InputService;
 import service.StudentService;
-import csv.CSVWriter;
+import csv.CsvWriter;
 
 import java.util.List;
 
@@ -41,7 +41,7 @@ public class StudentMenu extends Menu {
         StudentService.displayFromList(students);
         String saveReport = inputService.getSaveReportInput();
         if (saveReport.equals("y")) {
-            CSVWriter csvWriter = new CSVWriter("students", cid);
+            CsvWriter csvWriter = new CsvWriter("students", cid);
             csvWriter.write(students);
         }
     }

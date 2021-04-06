@@ -6,7 +6,7 @@ import model.Course;
 import repository.StudentEnrolmentManager;
 import service.CourseService;
 import service.InputService;
-import csv.CSVWriter;
+import csv.CsvWriter;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class CourseMenu extends Menu {
         CourseService.displayFromList(courses);
         String saveReport = inputService.getSaveReportInput();
         if (saveReport.equals("y")) {
-            CSVWriter csvWriter = new CSVWriter("courses", sid, semester);
+            CsvWriter csvWriter = new CsvWriter("courses", sid, semester);
             csvWriter.write(courses);
         }
     }
@@ -58,7 +58,7 @@ public class CourseMenu extends Menu {
         CourseService.displayFromList(courses);
         String saveReport = inputService.getSaveReportInput();
         if (saveReport.equals("y")) {
-            CSVWriter csvWriter = new CSVWriter("courses", semester);
+            CsvWriter csvWriter = new CsvWriter("courses", semester);
             csvWriter.write(courses);
         }
     }

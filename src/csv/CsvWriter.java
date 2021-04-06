@@ -7,10 +7,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class CSVWriter {
+public class CsvWriter {
     private final String fileName;
 
-    public CSVWriter(String... names) {
+    public CsvWriter(String... names) {
         this.fileName = String.join("_", names) + ".csv";
     }
 

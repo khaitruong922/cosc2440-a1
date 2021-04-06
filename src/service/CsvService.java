@@ -1,6 +1,6 @@
 package service;
 
-import csv.CSVReader;
+import csv.CsvReader;
 import helper.DateParser;
 import model.Course;
 import model.Enrolment;
@@ -52,7 +52,7 @@ public class CsvService {
     }
 
     public List<Student> getStudentsFromCsvFile(String fileName) {
-        CSVReader csvReader = new CSVReader(fileName);
+        CsvReader csvReader = new CsvReader(fileName);
         List<Student> students = new ArrayList<>();
         csvReader.getAll().forEach(csv -> {
             students.add(csvToStudent(csv));
@@ -61,7 +61,7 @@ public class CsvService {
     }
 
     public List<Course> getCoursesFromCsvFile(String fileName) {
-        CSVReader csvReader = new CSVReader(fileName);
+        CsvReader csvReader = new CsvReader(fileName);
         List<Course> courses = new ArrayList<>();
         csvReader.getAll().forEach(csv -> {
             courses.add(csvToCourse(csv));
@@ -70,7 +70,7 @@ public class CsvService {
     }
 
     public List<Enrolment> getEnrolmentsFromCsvFile(String fileName) {
-        CSVReader csvReader = new CSVReader(fileName);
+        CsvReader csvReader = new CsvReader(fileName);
         List<Enrolment> enrolments = new ArrayList<>();
         csvReader.getAll().forEach(csv -> {
             System.out.println("Here");
