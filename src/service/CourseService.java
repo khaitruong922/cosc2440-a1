@@ -40,8 +40,4 @@ public class CourseService {
                 .filter(e -> e.getStudent().getId().equals(sid) && e.getSemester().equals(semester))
                 .map(Enrolment::getCourse).distinct().collect(Collectors.toList());
     }
-
-    public Course getCourseById(String id) {
-        return sem.getCourseById(id);
-    }
 }
