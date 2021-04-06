@@ -73,7 +73,6 @@ public class CsvService {
         CsvReader csvReader = new CsvReader(fileName);
         List<Enrolment> enrolments = new ArrayList<>();
         csvReader.getAll().forEach(csv -> {
-            System.out.println("Here");
             enrolments.add(csvToEnrolment(csv));
         });
         return enrolments;
