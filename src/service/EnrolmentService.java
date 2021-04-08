@@ -1,12 +1,10 @@
 package service;
 
-import menu.model.Table;
-import model.Course;
+import helper.Table;
 import model.Enrolment;
 import repository.StudentEnrolmentManager;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class EnrolmentService {
     private final StudentEnrolmentManager sem;
@@ -33,7 +31,7 @@ public class EnrolmentService {
     }
 
 
-    public void deleteEnrolment(String sid, String cid, String semester) {
-        sem.deleteEnrolment(sid, cid, semester);
+    public boolean deleteEnrolment(String sid, String cid, String semester) {
+        return sem.deleteEnrolment(sid, cid, semester);
     }
 }

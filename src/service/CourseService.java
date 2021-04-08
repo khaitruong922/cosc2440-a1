@@ -1,7 +1,6 @@
 package service;
 
-import menu.model.InputField;
-import menu.model.Table;
+import helper.Table;
 import model.Course;
 import model.Enrolment;
 import repository.StudentEnrolmentManager;
@@ -39,9 +38,5 @@ public class CourseService {
         return sem.getEnrolments().stream()
                 .filter(e -> e.getStudent().getId().equals(sid) && e.getSemester().equals(semester))
                 .map(Enrolment::getCourse).distinct().collect(Collectors.toList());
-    }
-
-    public Course getCourseById(String id) {
-        return sem.getCourseById(id);
     }
 }

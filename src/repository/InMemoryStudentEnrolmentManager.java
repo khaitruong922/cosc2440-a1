@@ -3,34 +3,40 @@ package repository;
 import model.Course;
 import model.Student;
 import model.Enrolment;
+import service.CsvService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class InMemoryStudentEnrolmentManager implements StudentEnrolmentManager {
     private final List<Enrolment> enrolments = new ArrayList<>();
     private final List<Student> students = new ArrayList<>();
     private final List<Course> courses = new ArrayList<>();
+    private final CsvService csvService;
 
     public InMemoryStudentEnrolmentManager() {
-
+        csvService = new CsvService(this);
     }
 
     public void populateData() {
-        addStudent(new Student("s3818074", "Khai Truong", null));
-        addStudent(new Student("s3818075", "Tsuu", null));
-        addStudent(new Student("s3818076", "Tsuuu", null));
-        addCourse(new Course("COSC2092", "Machine Learning", 24));
-        addCourse(new Course("COSC2440", "Software Architecture: Design & Implementation", 12));
-        addCourse(new Course("COSC2441", "Software Engineering Design", 12));
-        addEnrolment("s3818074", "COSC2092", "2021A");
-        addEnrolment("s3818074", "COSC2440", "2021A");
-        addEnrolment("s3818074", "COSC2441", "2021B");
-        addEnrolment("s3818075", "COSC2092", "2021A");
-        addEnrolment("s3818075", "COSC2441", "2021A");
-        addEnrolment("s3818076", "COSC2441", "2021B");
-        addEnrolment("s3818076", "COSC2440", "2021B");
+        populateStudents();
+        populateCourses();
+        populateEnrolments();
+    }
+
+    private void populateStudents() {
+        students.clear();
+        students.addAll(csvService.getStudentsFromCsvFile("students.csv"));
+    }
+
+    private void populateCourses() {
+        courses.clear();
+        courses.addAll(csvService.getCoursesFromCsvFile("courses.csv"));
+    }
+
+    private void populateEnrolments() {
+        enrolments.clear();
+        enrolments.addAll(csvService.getEnrolmentsFromCsvFile("enrolments.csv"));
     }
 
     public boolean addStudent(Student student) {

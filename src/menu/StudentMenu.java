@@ -1,15 +1,11 @@
 package menu;
 
-import menu.model.InputField;
-import menu.model.Menu;
-import menu.model.Option;
-import model.Course;
+import helper.Option;
 import model.Student;
 import repository.StudentEnrolmentManager;
-import service.CourseService;
 import service.InputService;
 import service.StudentService;
-import writer.CSVWriter;
+import csv.CsvWriter;
 
 import java.util.List;
 
@@ -44,7 +40,7 @@ public class StudentMenu extends Menu {
         StudentService.displayFromList(students);
         String saveReport = inputService.getSaveReportInput();
         if (saveReport.equals("y")) {
-            CSVWriter csvWriter = new CSVWriter("students", cid);
+            CsvWriter csvWriter = new CsvWriter("students", cid);
             csvWriter.write(students);
         }
     }

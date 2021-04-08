@@ -1,4 +1,8 @@
-package menu.model;
+package menu;
+
+import helper.InputField;
+import helper.Option;
+import helper.Table;
 
 import java.util.ArrayList;
 import java.util.List;

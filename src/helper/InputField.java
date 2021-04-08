@@ -1,6 +1,4 @@
-package menu.model;
-
-import validator.Validator;
+package helper;
 
 import java.util.Scanner;
 
@@ -22,7 +20,7 @@ public class InputField {
             System.out.println("Field is missing.");
             return getInput();
         }
-        // Check if the input is valid
+        // Check if the input is invalid
         if (validator != null && !validator.validate(input)) {
             return getInput();
         }

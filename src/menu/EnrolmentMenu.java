@@ -1,18 +1,11 @@
 package menu;
 
-import menu.model.InputField;
-import menu.model.Menu;
-import menu.model.Option;
-import menu.model.Table;
-import model.Course;
+import helper.Option;
 import model.Enrolment;
-import model.Student;
 import repository.StudentEnrolmentManager;
-import service.CourseService;
 import service.EnrolmentService;
 import service.InputService;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
