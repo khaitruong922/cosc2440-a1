@@ -64,7 +64,7 @@ public class EnrolmentMenu extends Menu {
         EnrolmentService.displayFromList(enrolments);
     }
 
-    public void enroll() {
+    private void enroll() {
         String sid = inputService.getSidInput();
         if (sid.isEmpty()) return;
         String cid = inputService.getCidInput();
